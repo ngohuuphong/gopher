@@ -1,0 +1,20 @@
+hash: 6821f23fe96d0567459442d374a4babff3925061fd0759e61f305aefb008e4f4
+updated: 2021-03-17T15:43:32.368972+09:00
+imports:
+- name: github.com/badoux/checkmail
+  version: ea0008cdd39d90db32e72e1041881398187fd39c
+- name: github.com/dgrijalva/jwt-go
+  version: dc14462fd58732591c7fa58cc8496d6824316a82
+- name: github.com/gorilla/mux
+  version: 98cb6bf42e086f6af920b965c38cacc07402d51b
+- name: github.com/lib/pq
+  version: 072e83d238c297c71cab11154695af301010031e
+  subpackages:
+  - oid
+  - scram
+- name: golang.org/x/crypto
+  version: e6e6c4f2bb5b5887c7f7dd52f01ea7b2fbeb297d
+  subpackages:
+  - bcrypt
+  - blowfish
+testImports: []
