@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">GoLang Test</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-right">
+                    <a href="/register" class="btn btn-sm btn-primary">Register <i class="far fa-user-circle"></i> </a>
+                    <a href="/login" class="btn btn-sm btn-outline-primary">Login <i class="fas fa-sign-in-alt"></i> </a>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <h5>Product</h5>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Please enter keyword" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="data-table">
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                        </tr>
+                        {{range .Products}}
+                        <tr>
+                            <td>{{.Id}}</td>
+                            <td>{{ .Name}}</td>
+                            <td>{{ .Price}}</td>
+                            <td>{{ .Quantity}}</td>
+                            <td>{{ .Amount}}</td>
+                        </tr>
+                        {{end}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/assets/js/jquery-3.6.0.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script>
+    var ajaxSearch = (search) => {
+        $.ajax({
+            type: 'POST',
+            dataType: 'html',
+            url: '/',
+            beforeSend: () => {
+                $("#data-table").html("Loading...");
+            },
+            data: {
+                search: search
+            },
+            success: (oData) => {
+                $("#data-table").html(oData);
+            }
+        });
+    };
+
+    $("#search").keyup(() => {
+        ajaxSearch($("#search").val());
+    });
+</script>
+
+</html>
