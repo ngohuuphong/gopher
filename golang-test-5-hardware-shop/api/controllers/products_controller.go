@@ -26,9 +26,8 @@ type productsControllerImpl struct {
 	paginationBuilder  repository.PaginationBuilderRepository
 }
 
-func NewProductsController(productsRepository repository.ProductsRepository) *productsControllerImpl {
-	return &productsControllerImpl{productsRepository,
-		repository.NewPaginationBuilderRepository(productsRepository)}
+func NewProductsController(pd repository.ProductsRepository) *productsControllerImpl {
+	return &productsControllerImpl{pd, repository.NewPaginationBuilderRepository(pd)}
 }
 
 func (c *productsControllerImpl) PostProduct(w http.ResponseWriter, r *http.Request) {

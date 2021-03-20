@@ -24,7 +24,7 @@ type categoriesControllerImpl struct {
 	categoriesRepository repository.CategoriesRepository
 }
 
-func NewCategoriesRepository(categoriesRepository repository.CategoriesRepository) *categoriesControllerImpl {
+func NewCategoriesController(categoriesRepository repository.CategoriesRepository) *categoriesControllerImpl {
 	return &categoriesControllerImpl{categoriesRepository}
 }
 

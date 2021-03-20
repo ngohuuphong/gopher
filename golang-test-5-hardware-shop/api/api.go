@@ -38,7 +38,7 @@ func Run() {
 	categoriesRepository := repository.NewCategoriesRepository(db)
 	productsRepository := repository.NewProductsRepository(db)
 
-	categoriesController := controllers.NewCategoriesRepository(categoriesRepository)
+	categoriesController := controllers.NewCategoriesController(categoriesRepository)
 	productsController := controllers.NewProductsController(productsRepository)
 
 	categoryRoutes := routes.NewCategoryRoutes(categoriesController)
