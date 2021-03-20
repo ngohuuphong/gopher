@@ -17,7 +17,7 @@ import (
 
 var (
 	port        = flag.Int("p", 8000, "set port")
-	resetTables = flag.Bool("rt", false, "reset tables")
+	resetTables = flag.Bool("rt", true, "reset tables")
 )
 
 func Run() {
