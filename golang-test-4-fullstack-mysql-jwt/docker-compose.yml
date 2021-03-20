@@ -4,7 +4,7 @@ services:
     container_name: full_app
     build: .
     ports: 
-      - 8080:8080 
+      - 9000:9000 
     restart: on-failure
     volumes:
       - api:/usr/src/app/
@@ -15,7 +15,7 @@ services:
 
 
   fullstack-mysql:
-    image: circleci/mysql:latest-ram
+    image: mysql:5.7
     container_name: full_db_mysql
     ports: 
       - 3306:3306
@@ -45,8 +45,6 @@ services:
     restart: always
     networks:
       - fullstack
-
-
 volumes:
   api:
   database_mysql:                  
