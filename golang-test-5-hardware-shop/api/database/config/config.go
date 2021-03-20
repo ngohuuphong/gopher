@@ -14,6 +14,7 @@ func BuildDSN() string {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	host := os.Getenv("DB_HOST")
 	if host == "" {
 		host = "localhost"
@@ -30,9 +31,9 @@ func BuildDSN() string {
 	}
 
 	pass := os.Getenv("DB_PASSWORD")
-	if pass == "" {
-		pass = "@root"
-	}
+	// if pass == "" {
+	// 	pass = "@root"
+	// }
 
 	dbname := os.Getenv("DB_NAME")
 	if dbname == "" {
