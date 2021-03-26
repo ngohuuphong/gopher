@@ -1,0 +1,17 @@
+*.log
+.DS_Store
+.idea
+erp
+erp_database.sql
+data.json
+dump.rdb
+appendonly.aof
+
+# private configuration
+app.conf
+
+# dependencies
+vendor
+
+# binary file 
+cswm

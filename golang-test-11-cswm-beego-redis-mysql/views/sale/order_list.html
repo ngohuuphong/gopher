@@ -1,0 +1,110 @@
+<!--jquery bootstrap css-->
+<link rel="stylesheet" href="/static/css/paginator.css">
+<!--jquery bootstrap css-->
+
+<section class="Hui-article-box">
+	<nav class="breadcrumb"><i class="Hui-iconfont"></i> <a href="/" class="maincolor">首页</a>
+		<span class="c-999 en">&gt;</span>
+		<a onclick="goBack()" class="maincolor">上一页</a>
+		<span class="c-999 en">&gt;</span>
+		<span class="c-666">出库单列表</span>
+		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+		   href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<div class="Hui-article">
+		<article class="cl pd-20">
+
+			<div style="width: 80%; margin: 0 auto 10px auto;">
+				<div class="row cl">
+					<input type="text" class="input-text mt-5 radius" name="consumer_filter" autocomplete="off" placeholder="客户" style="width: 15%">
+					<input type="text" class="input-text mt-5 radius" name="department_filter" autocomplete="off" placeholder="客户单位" style="width: 15%">
+					<input type="text" class="input-text mt-5 radius" name="salesman_filter" autocomplete="off" placeholder="业务员" style="width: 15%">
+					<a class="btn btn-primary radius mt-5 size-S order_filter_btn"> 检 索 </a>
+					<span class="c-warning">不需要筛选的字段不要填写~</span>
+				</div>
+			</div>
+
+			<table class="table table-border table-bordered table-bg table-hover">
+				<thead>
+				<tr>
+					<th colspan="10" scope="col">出库单列表
+						<a class="btn btn-primary radius size-MINI order-all">全部</a>
+						<a class="btn btn-primary radius size-MINI order-state-on">正常</a>
+						<a class="btn btn-primary radius size-MINI order-state-off">废弃</a>
+					</th>
+				</tr>
+				<tr class="text-c">
+					<th>ASAP</th>
+					<th>客户 <a class="order_list_order btn size-MINI btn-success-outline radius" style="border: none;">&nbsp;<i class="Hui-iconfont Hui-iconfont-paixu"></i>&nbsp;</a></th>
+					<th>客户单位 <a class="order_list_order btn size-MINI btn-success-outline radius" style="border: none;">&nbsp;<i class="Hui-iconfont Hui-iconfont-paixu"></i>&nbsp;</a></th>
+					<th>业务员 <a class="order_list_order btn size-MINI btn-success-outline radius" style="border: none;">&nbsp;<i class="Hui-iconfont Hui-iconfont-paixu"></i>&nbsp;</a></th>
+					<th>金额</th>
+					<th>操作人</th>
+					<th>状态</th>
+					<th>创建时间</th>
+					<th>更新时间</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody id="order-list-btn">
+
+				</tbody>
+			</table>
+		</article>
+
+		<div class="text-c">
+			<!--<input type="hidden" id="total_page" value="{{.total_page}}">-->
+			<span class="dropDown page_size_btn" style="position: relative; top: -33px">
+                <a class="dropDown_A btn btn-default radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >每页显示</a>
+                <ul class="dropDown-menu menu radius box-shadow">
+                    <li><a class="page_size" data="5">5条</a></li>
+                    <li><a class="page_size" data="10">10条</a></li>
+                    <li><a class="page_size" data="20">20条</a></li>
+                    <li><a class="page_size" data="30">30条</a></li>
+                    <li><a class="page_size" data="50">50条</a></li>
+                    <li><a class="page_size" data="100">100条</a></li>
+                </ul>
+            </span>
+			<ul class="pagination" id="order_pagination"></ul>
+		</div>
+
+	</div>
+
+	<!--修改销售记录弹窗-->
+	<div id="order_price_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top: 70px;">
+		<div class="modal-dialog" style="width: 60%">
+			<input type="hidden" name="sale_id">
+			<div class="modal-content radius">
+				<div class="modal-header">
+					<h3 class="modal-title">修改总价</h3>
+					<a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+				</div>
+				<div class="modal-body">
+					<form action="/order_price_edit" method="post" id="send-form">
+						{{.xsrfdata}}
+						<input type="hidden" name="order_id" value="">
+
+						<div class="row cl">
+							<label class="form-label col-xs-4 col-sm-2" for="sum"><span class="c-red">*</span>价格：</label>
+							<div class="formControls col-xs-8 col-sm-9">
+								<input type="text" class="input-text radius" id="sum" name="sum">
+							</div>
+						</div>
+					</form>
+					<br>
+					<div class="modal-footer">
+						<button class="btn btn-primary" id="send">确定</button>
+						<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+	var order = {{.order}}
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
